@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
-import '../widgets/auth_error_dialog.dart';
+import '../../widgets/auth_error_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -163,7 +163,9 @@ class _LoginPageState extends State<LoginPage> {
                 height: 16,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.go('/reset_password');
+                },
                 child: Text(
                   'パスワードを忘れた方はこちら',
                   style: TextStyle(
