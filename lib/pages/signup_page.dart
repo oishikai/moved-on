@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:moved_on/auth/authenticate.dart';
+
+import '../widgets/auth_error_dialog.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -12,8 +14,27 @@ class SignUpPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignUpPage> {
   bool _isObscure = true;
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // 登録ボタン押下時
+  _signup() async {
+    // キーボードを閉じる
+    FocusScope.of(context).unfocus();
+
+    // 登録
+    try {
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AuthErrorDialog(error: e),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,9 +127,7 @@ class _SignupPageState extends State<SignUpPage> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Authenticate.createAccount(_emailController.text, _passwordController.text);
-                  },
+                  onPressed: () => _signup(),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
