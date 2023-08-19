@@ -30,9 +30,16 @@ class _LoginPageState extends State<LoginPage> {
       if (!mounted) return;
       context.go('/');
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('ログインしました'),
-          duration: Duration(seconds: 1),
+        SnackBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          content: Text(
+            'ログインしました',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary,
+              fontSize: 16,
+            ),
+          ),
+          duration: const Duration(seconds: 1),
         ),
       );
     } catch (e) {

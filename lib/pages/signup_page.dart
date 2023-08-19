@@ -31,9 +31,16 @@ class _SignupPageState extends State<SignUpPage> {
       if (!mounted) return;
       context.go('/');
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('登録しました'),
-          duration: Duration(seconds: 1),
+        SnackBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          content: Text(
+            '登録しました',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary,
+              fontSize: 16,
+            ),
+          ),
+          duration: const Duration(seconds: 1),
         ),
       );
     } catch (e) {
