@@ -27,6 +27,14 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
+      if (!mounted) return;
+      context.go('/');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('ログインしました'),
+          duration: Duration(seconds: 1),
+        ),
+      );
     } catch (e) {
       showDialog(
         context: context,

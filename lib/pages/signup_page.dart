@@ -28,6 +28,14 @@ class _SignupPageState extends State<SignUpPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
+      if (!mounted) return;
+      context.go('/');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('登録しました'),
+          duration: Duration(seconds: 1),
+        ),
+      );
     } catch (e) {
       showDialog(
         context: context,
@@ -149,7 +157,7 @@ class _SignupPageState extends State<SignUpPage> {
                 height: 16,
               ),
               TextButton(
-                onPressed: () => context.go('/'),
+                onPressed: () => context.go('/login'),
                 child: Text(
                   'ログインはこちら',
                   style: TextStyle(
