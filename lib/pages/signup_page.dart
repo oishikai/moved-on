@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<SignUpPage> createState() => _SignupPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _SignupPageState extends State<SignUpPage> {
   bool _isObscure = true;
 
   @override
@@ -111,7 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                   child: const Text(
-                    'ログイン',
+                    '登録',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -123,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 16,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () => context.go('/'),
                 child: Text(
                   'ログインはこちら',
                   style: TextStyle(

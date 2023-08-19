@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,7 +15,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 4,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () => context.go('/signup'),
                 child: Text(
                   '新規登録はこちら',
                   style: TextStyle(
