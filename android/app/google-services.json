@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "648411865617",
+    "project_id": "movedon",
+    "storage_bucket": "movedon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648411865617:android:8ae2f16930d31023e947b0",
+        "android_client_info": {
+          "package_name": "com.appdeveloper.kai.movedOn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648411865617-c4usjig9vag935buu6jlsalchds3ct3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRhSdnttStgoJOOW4q03GsybDcbqATwDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648411865617-c4usjig9vag935buu6jlsalchds3ct3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

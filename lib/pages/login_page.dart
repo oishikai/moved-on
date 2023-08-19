@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:moved_on/auth/authenticate.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,6 +12,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isObscure = true;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: TextField(
-                  //controller: controller,
+                  controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9@.]+$'))],
                   decoration: InputDecoration(
@@ -68,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: TextField(
+                  controller: _passwordController,
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: _isObscure,
                   decoration: InputDecoration(
@@ -102,7 +106,9 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => debugPrint('RaisedButton pushed.'),
+                  onPressed: () {
+                    Authenticate.logIn(_emailController.text, _passwordController.text);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
